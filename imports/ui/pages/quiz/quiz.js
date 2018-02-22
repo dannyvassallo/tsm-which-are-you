@@ -1,2 +1,2 @@
 import './quiz.html';
-import '../../components/questionCard/questionCard.js';
+import '../../components/question/question.js';
