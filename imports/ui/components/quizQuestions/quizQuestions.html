@@ -1,7 +1,7 @@
-<template name="questionOptions">
+<template name="quizQuestions">
   <ul>
-    {{#each option in options}}
-      {{> questionOption option=option}}
+    {{#each _id in questions}}
+      {{> question _id=_id}}
     {{/each}}
   </ul>
 </template>

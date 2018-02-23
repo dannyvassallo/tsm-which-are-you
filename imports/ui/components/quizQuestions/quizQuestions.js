@@ -1,7 +1,7 @@
 import { Template } from 'meteor/templating';
 
-import './questionOptions.html';
-import '../questionOption/questionOption.js';
+import './quizQuestions.html';
+import '../question/question.js';
 
-Template.questionOptions.helpers({
+Template.quizQuestions.helpers({
 });
