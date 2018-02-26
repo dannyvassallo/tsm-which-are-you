@@ -7,4 +7,5 @@ export const Options = new Mongo.Collection('options');
 
 Factory.define('option', Options, {
   text: () => 'test text',
+  match: () => Factory.create('match'),
 });

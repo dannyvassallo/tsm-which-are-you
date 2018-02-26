@@ -6,6 +6,14 @@ import '../quizQuestions/quizQuestions.js';
 import '../quizHeader/quizHeader.js';
 
 Template.quiz.helpers({
-  header: () => Quizes.findOne().header,
-  questions: () => Quizes.findOne().questions,
+  header: () => {
+    const quiz = Quizes.findOne();
+
+    return quiz ? quiz.header : '';
+  },
+  questions: () => {
+    const quiz = Quizes.findOne();
+
+    return quiz ? quiz.questions : '';
+  },
 });

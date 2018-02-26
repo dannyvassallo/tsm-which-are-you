@@ -5,16 +5,12 @@ import { Factory } from 'meteor/dburles:factory';
 
 export const Questions = new Mongo.Collection('questions');
 
-const getOptions = () => {
-  const options = [];
-  for (let i = 0; i < 4; i++) {
-    const { _id } = Factory.create('option');
-    options.push(_id);
-  }
-  return options;
-}
-
 Factory.define('question', Questions, {
   header: () => 'test question header',
-  options: getOptions,
+  options: () => {
+    const options = [];
+    for (let i = 0; i < 4; i++) options.push(Factory.create('option')._id);
+
+    return options;
+  },
 });
