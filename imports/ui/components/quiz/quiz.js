@@ -4,6 +4,7 @@ import { Quizes } from '../../../api/quizes/quizes.js';
 import './quiz.html';
 import '../quizQuestions/quizQuestions.js';
 import '../quizHeader/quizHeader.js';
+import '../shareResult/shareResult.js';
 
 Template.quiz.helpers({
   header: () => {
