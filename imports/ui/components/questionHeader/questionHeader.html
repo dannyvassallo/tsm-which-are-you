@@ -1,5 +1,14 @@
 <template name="questionHeader">
-  <h5>
-    {{text}}
-  </h5>
+  {{!-- render header and  --}}
+  <h5 class="card-title mb-1">{{question.title}}</h5>
+
+  {{!-- render subtitle if it exists --}}
+  {{#if question.subtitle}}
+    <h6 class="card-subtitle mb-1 text-muted">{{question.subtitle}}</h6>
+  {{/if}}
+
+  {{!-- render description if it exists --}}
+  {{#if question.description}}
+    <p class="card-subtitle mb-1 text-muted">{{question.description}}</p>
+  {{/if}}
 </template>

@@ -4,20 +4,21 @@ import { Options } from '../../../api/options/options';
 import './questionOption.html';
 
 Template.questionOption.helpers({
-  text: () => {
-    const { _id } = Template.instance().data;
-    const option = Options.findOne(_id);
+  // get the option object using the '_optionId' passed from the parent
+  // this will serve as the option context for the template
+  option: () => {
+    const { _optionId } = Template.instance().data;
+    const option = Options.findOne(_optionId);
 
-    return option ? option.text : '';
+    return option;
   },
 });
 
 Template.questionOption.events({
   // handle whenever a question option is clicked
   'click li': (event, template) => {
-    const { _id } = template.data;
-    console.log('clicked', _id);
-
+    const { _optionId } = template.data;
+    console.log('clicked', { _optionId });
 
     // animate click
     // NOTE: define a class in the css file that can be added and removed when

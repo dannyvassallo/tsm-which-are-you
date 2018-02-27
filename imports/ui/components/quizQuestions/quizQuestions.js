@@ -1,2 +1,2 @@
 import './quizQuestions.html';
-import '../question/question.js';
+import '../quizQuestion/quizQuestion.js';

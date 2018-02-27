@@ -1,0 +1,13 @@
+<template name="quizQuestion">
+  {{!-- render the entire question --}}
+  <div class="card mb-4">
+    <div class="card-body">
+
+      {{!-- render the question header --}}
+      {{> questionHeader question=question}}
+
+      {{!-- render all of the question options --}}
+      {{> questionOptions options=question.option}}
+    </div>
+  </div>
+</template>

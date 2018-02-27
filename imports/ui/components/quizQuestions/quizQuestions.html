@@ -1,7 +1,9 @@
 <template name="quizQuestions">
-  <ul>
-    {{#each _id in questions}}
-      {{> question _id=_id}}
-    {{/each}}
-  </ul>
+  <div class="row">
+    <div class="col-sm">
+      {{#each _questionId in quiz.questions}}
+        {{> quizQuestion _questionId=_questionId}}
+      {{/each}}
+    </div>
+  </div>
 </template>

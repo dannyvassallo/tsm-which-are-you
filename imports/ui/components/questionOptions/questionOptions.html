@@ -1,7 +1,11 @@
 <template name="questionOptions">
-  <ul>
-    {{#each _id in options}}
-      {{> questionOption _id=_id}}
+  {{!-- render all of the options associated to a question  --}}
+  <div class="list-group">
+
+    {{!-- loop through the array of ids and render each option --}}
+    {{#each _optionId in options}}
+      {{> questionOption _optionId=_optionId}}
     {{/each}}
-  </ul>
+
+  </div>
 </template>

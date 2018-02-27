@@ -1,5 +1,16 @@
 <template name="quizHeader">
-  <h4>
-    {{text}}
-  </h4>
+  {{!-- render full screen jumbotron --}}
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container-fluid">
+
+      {{!-- render the quiz title --}}
+      <h1 class="display-4">{{quiz.title}}</h1>
+
+      {{!-- render description if it exists --}}
+      {{#if quiz.description}}
+        <p class="lead">{{quiz.description}}</p>
+      {{/if}}
+
+    </div>
+  </div>
 </template>

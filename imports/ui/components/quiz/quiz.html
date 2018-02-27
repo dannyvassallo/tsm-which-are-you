@@ -1,5 +1,15 @@
 <template name="quiz">
-  {{> quizHeader text=header}}
-  {{> quizQuestions questions=questions}}
-  {{> shareResult}}
+
+  {{!-- render the quiz header --}}
+  {{> quizHeader quiz=quiz}}
+
+  <div class="container-fluid">
+
+    {{!-- render all of the quiz questions --}}
+    {{> quizQuestions quiz=quiz}}
+
+    {{!-- render the share results module --}}
+    {{> shareResult}}
+
+  </div>
 </template>
