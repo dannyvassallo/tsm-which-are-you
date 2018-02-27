@@ -8,5 +8,5 @@ export default Options;
 
 Factory.define('option', Options, {
   text: () => faker.lorem.sentence(),
-  match: () => Factory.create('match'),
+  _matchId: () => Factory.create('match'),
 });

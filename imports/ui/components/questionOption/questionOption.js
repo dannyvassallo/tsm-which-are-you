@@ -1,5 +1,6 @@
 import { Template } from 'meteor/templating';
 import { Options } from '../../../api/options/options';
+import { Session } from 'meteor/session';
 
 import './questionOption.html';
 
@@ -16,7 +17,7 @@ Template.questionOption.helpers({
 
 Template.questionOption.events({
   // handle whenever a question option is clicked
-  'click li': (event, template) => {
+  'click a': (event, template) => {
     const { _optionId } = template.data;
     console.log('clicked', { _optionId });
 
@@ -30,13 +31,23 @@ Template.questionOption.events({
     // store _id of selection so that we can calculate the best match after all
     // questions are answered
     // NOTE: this is a good use case for a session variable
-
+    const matches = Session.get('matches') || [];
+    Session.set('matches', [...matches, _optionId]);
     // END
 
 
     // scroll to next question
     // NOTE: the next question is the next <ul> tag
+    const $target = $(event.target);
+    const $thisQuizQuestion = $target.parents('.quiz-question');
+    const $nextQuizQuestion = $thisQuizQuestion.next('.quiz-question');
 
+    if ($nextQuizQuestion.length) {
+      const scrollTop = $thisQuizQuestion.offset().top;
+      $('html,body').animate({ scrollTop: scrollTop }, 'slow');
+    } else {
+      Session.set('isQuizComplete', true);
+    }
     // END
   },
 });
