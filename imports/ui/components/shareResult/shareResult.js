@@ -45,7 +45,7 @@ Template.shareResult.helpers({
       return maxEl;
   }
     const match = mode(matches);
-    console.log(matches);
+    // console.log(match);
     // END
 
 
