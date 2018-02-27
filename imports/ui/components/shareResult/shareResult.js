@@ -13,7 +13,7 @@ Template.shareResult.helpers({
   },
   match: () => {
     // bring in the session variable that holds all the answers
-
+    const matches = Session.get('matches');
     // END
 
 
@@ -23,7 +23,29 @@ Template.shareResult.helpers({
 
 
     // find the most common match from an array of matches
-    const match = {};
+    function mode(array) {
+      if(array.length == 0) {
+          return null;
+        }
+      let modeMap = {};
+      let maxEl = array[0];
+      let maxCount = 1;
+      for(let i = 0; i < array.length; i++) {
+          let el = array[i];
+          if(modeMap[el] == null) {
+              modeMap[el] = 1;
+          } else {
+              modeMap[el]++;
+          }
+          if(modeMap[el] > maxCount) {
+              maxEl = el;
+              maxCount = modeMap[el];
+          }
+      }
+      return maxEl;
+  }
+    const match = mode(matches);
+    console.log(matches);
     // END
 
 
