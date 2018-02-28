@@ -4,47 +4,39 @@ import { Session } from 'meteor/session';
 
 import './questionOption.html';
 
-Template.questionOption.helpers({
+Template.questionOption.onCreated(function questionOptionOnCreated() {
   // get the option object using the '_optionId' passed from the parent
   // this will serve as the option context for the template
-  option: () => {
-    const { _optionId } = Template.instance().data;
-    const option = Options.findOne(_optionId);
+  const { _optionId } = this.data;
+  const option = Options.findOne(_optionId);
+  this.option = new ReactiveVar(option);
+});
 
-    return option;
-  },
+
+Template.questionOption.helpers({
+  option: () => Template.instance().option.get(),
 });
 
 Template.questionOption.events({
   // handle whenever a question option is clicked
   'click a': (event, template) => {
-    const { _optionId } = template.data;
-    console.log('clicked', { _optionId });
+    const { _matchId } = template.option.get();
 
-    // animate click
-    // NOTE: define a class in the css file that can be added and removed when
-    // clicked. Bootstrap may be able to handle this out of the box.
-
-    // END
-
-
-    // store _id of selection so that we can calculate the best match after all
-    // questions are answered
-    // NOTE: this is a good use case for a session variable
+    // store `_id` of selection so that we can calculate the best match after
+    // all questions are answered
     const matches = Session.get('matches') || [];
-    Session.set('matches', [...matches, _optionId]);
+    Session.set('matches', [...matches, _matchId]);
     // END
 
 
-    // scroll to next question
-    // NOTE: the next question is the next <ul> tag
+    // use jQuery to scroll to next `quiz-question` class
     const $target = $(event.target);
     const $thisQuizQuestion = $target.parents('.quiz-question');
     const $nextQuizQuestion = $thisQuizQuestion.next('.quiz-question');
 
     if ($nextQuizQuestion.length) {
       const scrollTop = $thisQuizQuestion.offset().top;
-      $('html,body').animate({ scrollTop: scrollTop }, 'slow');
+      $('html,body').animate({ scrollTop }, 'slow');
     } else {
       Session.set('isQuizComplete', true);
     }

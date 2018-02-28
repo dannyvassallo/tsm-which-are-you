@@ -1,56 +1,67 @@
 import { Template } from 'meteor/templating';
+import { Matches } from '../../../api/matches/matches';
+import { Session } from 'meteor/session';
 
 import './shareResult.html';
 
+const getMode = (array) => {
+  const freqMap = {}; // store frequency for each item in the array
+
+  let freq = 0; // frequency of the mode
+  let mode;
+
+  array.forEach((item) => {
+    freqMap[item] = (freqMap[item] || 0) + 1; // increment the item count
+
+    if (freq < freqMap[item]) {
+      freq = freqMap[item];
+      mode = item;
+    }
+  });
+
+  return mode;
+};
+
+
+Template.shareResult.onCreated(function shareResultOnCreated() {
+  this.show = new ReactiveVar(false);
+  this.match = new ReactiveVar(false);
+
+
+  Tracker.autorun(() => {
+    const show = Session.get('isQuizComplete') || false;
+    this.show.set(show);
+  });
+
+  Tracker.autorun(() => {
+    const show = Session.get('isQuizComplete') || false;
+    if (show) {
+      // bring in the session variable that holds all the answers
+      const matches = Session.get('matches');
+      // END
+
+
+      // transform the answer array so that it is just an array of matches
+
+      // END
+
+
+      // find the most common match from an array of matches
+      const _matchId = getMode(matches);
+      const match = Matches.findOne(_matchId);
+      console.log({ _matchId, match });
+      // END
+
+      // return the most common match object from the database
+      return match;
+      // END
+    }
+  });
+});
+
+
 Template.shareResult.helpers({
   // helper that will only be true after all questions are answered
-  show: () => {
-    //
-    const show = Session.get('isQuizComplete') || false;
-    // END
-
-    return show;
-  },
-  match: () => {
-    // bring in the session variable that holds all the answers
-    const matches = Session.get('matches');
-    // END
-
-
-    // transform the answer array so that it is just an array of matches
-
-    // END
-
-
-    // find the most common match from an array of matches
-    function mode(array) {
-      if(array.length == 0) {
-          return null;
-        }
-      let modeMap = {};
-      let maxEl = array[0];
-      let maxCount = 1;
-      for(let i = 0; i < array.length; i++) {
-          let el = array[i];
-          if(modeMap[el] == null) {
-              modeMap[el] = 1;
-          } else {
-              modeMap[el]++;
-          }
-          if(modeMap[el] > maxCount) {
-              maxEl = el;
-              maxCount = modeMap[el];
-          }
-      }
-      return maxEl;
-  }
-    const match = mode(matches);
-    // console.log(match);
-    // END
-
-
-    // return the most common match object from the database
-    return match;
-    // END
-  },
+  show: () => Template.instance().show.get(),
+  match: () => Template.instance().match.get(),
 });
