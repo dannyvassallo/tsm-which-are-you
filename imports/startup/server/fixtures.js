@@ -60,5 +60,5 @@ const seedQuizes = ({ count = 1 }) => {
 
 
 Meteor.startup(() => {
-  seedQuizes(1);
+  seedQuizes({ count: 1 });
 });

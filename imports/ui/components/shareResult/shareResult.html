@@ -1,11 +1,18 @@
 <template name="shareResult">
   {{#if show}}
-    <div class="card">
-      <img class="card-img-top" src="{{match.img}}" alt="{{match.title}}">
-      <div class="card-body">
-        <h5 class="card-title">{{match.title}}</h5>
-        <p class="card-text">{{match.body}}</p>
-        <a href="#" class="btn btn-primary">Share Results</a>
+    <div class="row">
+      <div class="col col-12 col-sm-auto">
+        <div class="card">
+          <img class="card-img-top" src="{{match.img}}" alt="{{match.title}}">
+          <div class="card-body">
+            <h5 class="card-title">{{match.title}}</h5>
+            <p class="card-text">{{match.body}}</p>
+            <a href="#" class="btn btn-primary">Share Results</a>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        Hello world!
       </div>
     </div>
   {{/if}}
