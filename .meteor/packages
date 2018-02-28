@@ -24,3 +24,5 @@ kadira:blaze-layout
 dburles:factory
 practicalmeteor:faker
 session
+
+browser-policy                # Configure security policies enforced by the browser

@@ -1,8 +1,12 @@
 <template name="shareResult">
-  <div>
-    {{#if show}}
-      results
-      {{match}}
-    {{/if}}
-  </div>
+  {{#if show}}
+    <div class="card">
+      <img class="card-img-top" src="{{match.img}}" alt="{{match.title}}">
+      <div class="card-body">
+        <h5 class="card-title">{{match.title}}</h5>
+        <p class="card-text">{{match.body}}</p>
+        <a href="#" class="btn btn-primary">Share Results</a>
+      </div>
+    </div>
+  {{/if}}
 </template>

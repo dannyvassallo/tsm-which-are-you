@@ -49,11 +49,12 @@ Template.shareResult.onCreated(function shareResultOnCreated() {
       // find the most common match from an array of matches
       const _matchId = getMode(matches);
       const match = Matches.findOne(_matchId);
-      console.log({ _matchId, match });
+      // console.log({ _matchId, match });
       // END
 
       // return the most common match object from the database
-      return match;
+      this.match.set(match);
+      // return match;
       // END
     }
   });
