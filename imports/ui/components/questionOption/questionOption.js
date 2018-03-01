@@ -31,12 +31,17 @@ Template.questionOption.events({
 
     // use jQuery to scroll to next `quiz-question` class
     const $target = $(event.target);
-    const $thisQuizQuestion = $target.parents('.quiz-question');
-    const $nextQuizQuestion = $thisQuizQuestion.next('.quiz-question');
+    const $thisQuizQuestion = $target.parents('.scrollTop-container');
+    const $nextQuizQuestion = $thisQuizQuestion.next('.scrollTop-container');
+
+    $target.addClass('selected active');
+    $thisQuizQuestion.addClass('answered-question');
 
     if ($nextQuizQuestion.length) {
       const scrollTop = $thisQuizQuestion.offset().top;
-      $('html,body').animate({ scrollTop }, 'slow');
+      setTimeout(function () {
+        $('html,body').animate({ scrollTop }, 'slow');
+      }, 100);
     } else {
       Session.set('isQuizComplete', true);
     }
