@@ -1,0 +1,65 @@
+#result-card {
+  max-width: 400px;
+
+  .card-top {
+    height: 120px;
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+  }
+
+  .avatar {
+    width: 120px;
+    margin-top: -65px;
+    overflow: hidden;
+    border: 5px solid #fff;
+    margin-left: auto;
+    margin-right: auto;
+
+    img {
+      max-width: 150px;
+      width: 100%;
+    }
+  }
+}
+
+$facebook-primary: #3b5998;
+$facebook-primary-dark: #2d4475;
+
+.btn.btn-facebook {
+  background-color: $facebook-primary;
+  border-color: $facebook-primary;
+  color: #fff !important;
+
+  &:hover {
+    background-color: $facebook-primary-dark;
+    border-color: $facebook-primary-dark;
+  }
+}
+
+$twitter-primary: #0084b4;
+$twitter-primary-dark: #06759d;
+
+.btn.btn-twitter {
+  background-color: $twitter-primary;
+  border-color: $twitter-primary;
+  color: #fff !important;
+
+  &:hover {
+    background-color: $twitter-primary-dark;
+    border-color: $twitter-primary-dark;
+  }
+}
+
+$instagram-primary: #458eff;
+$instagram-primary-dark: #3978d9;
+
+.btn.btn-instagram {
+  background-color: $instagram-primary;
+  border-color: $instagram-primary;
+  color: #fff !important;
+
+  &:hover {
+    background-color: $instagram-primary-dark;
+    border-color: $instagram-primary-dark;
+  }
+}

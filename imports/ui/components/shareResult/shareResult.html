@@ -1,18 +1,29 @@
 <template name="shareResult">
   {{#if show}}
     <div class="row">
-      <div class="col col-12 col-sm-auto">
-        <div class="card scrollTop-container">
-          <img class="card-img-top" src="{{match.img}}" alt="{{match.title}}">
-          <div class="card-body">
-            <h5 class="card-title">{{match.title}}</h5>
-            <p class="card-text">{{match.body}}</p>
-            <a href="#" class="btn btn-primary">Share Results</a>
+      <div class="col d-none d-sm-block">
+        Extra Col
+      </div>
+      <div class="col col-12 col-sm-auto d-flex justify-content-center">
+        <div id="result-card" class="card mw-75">
+          <div class="card-top bg-primary"></div>
+          <div class="avatar rounded-circle">
+            <img src="{{match.img}}">
+          </div>
+          <div class="card-body text-center">
+            <h4 class="card-title">{{match.name}}</h4>
+            <p>{{match.text}}</p>
+          </div>
+          <div class="card-footer text-center">
+            <h5 class="card-title">Share Results</h5>
+            <a class="btn btn-facebook"><i class="fa fa-facebook"></i> Facebook</a>
+            <a class="btn btn-twitter"><i class="fa fa-twitter"></i> Twitter</a>
+            <a class="btn btn-instagram"><i class="fa fa-instagram"></i> Instagram</a>
           </div>
         </div>
       </div>
-      <div class="col">
-        Hello world!
+      <div class="col d-none d-sm-block">
+        Extra Col
       </div>
     </div>
   {{/if}}

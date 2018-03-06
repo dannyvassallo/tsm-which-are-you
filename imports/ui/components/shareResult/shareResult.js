@@ -2,6 +2,7 @@ import { Template } from 'meteor/templating';
 import { Matches } from '../../../api/matches/matches';
 import { Session } from 'meteor/session';
 
+import './shareResult.scss';
 import './shareResult.html';
 
 const getMode = (array) => {
@@ -31,18 +32,10 @@ Template.shareResult.onCreated(function shareResultOnCreated() {
   Tracker.autorun(() => {
     const show = Session.get('isQuizComplete') || false;
     this.show.set(show);
-  });
 
-  Tracker.autorun(() => {
-    const show = Session.get('isQuizComplete') || false;
     if (show) {
       // bring in the session variable that holds all the answers
       const matches = Session.get('matches');
-      // END
-
-
-      // transform the answer array so that it is just an array of matches
-
       // END
 
 

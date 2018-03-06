@@ -8,7 +8,7 @@ export const Matches = new Mongo.Collection('matches');
 export default Matches;
 
 Factory.define('match', Matches, {
-  title: () => faker.lorem.sentences(),
-  body: () => faker.lorem.sentences(),
+  name: () => `${faker.name.firstName()} ${faker.name.firstName()}`,
+  text: () => faker.lorem.sentences(),
   img: () => 'https://www.placecage.com/c/200/200',
 });
