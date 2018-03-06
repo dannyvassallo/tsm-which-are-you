@@ -1,6 +1,7 @@
+import FB from 'fb';
+import { Session } from 'meteor/session';
 import { Template } from 'meteor/templating';
 import { Options } from '../../../api/options/options';
-import { Session } from 'meteor/session';
 
 import './questionOption.html';
 
